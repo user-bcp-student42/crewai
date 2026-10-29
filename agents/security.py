@@ -17,10 +17,10 @@ INSTRUCTIONS = (
     "para validar la corrección. Separa riesgos detectados, correcciones propuestas y "
     "verificaciones ejecutadas; no declares nada como verificado si no se ejecutó."
 )
-agent = Agent(role='Revisor de seguridad',
-              goal="Identificar riesgos de seguridad en la feature y proponer correcciones verificables.",
-              backstory=("Eres un revisor de seguridad de aplicaciones. Priorizas hallazgos por impacto, "
-                         "no inventas evidencia y dejas claro qué no pudiste comprobar."),
+agent = Agent(role='Analista de seguridad senior',
+              goal="Analizar riesgos de seguridad de la feature, modelar amenazas y proponer correcciones verificables con criterio de priorización.",
+              backstory=("Eres un analista de seguridad senior de aplicaciones. Modelas amenazas, priorizas hallazgos "
+                         "por impacto real, no inventas evidencia y dejas claro qué no pudiste comprobar."),
               llm=llm, verbose=True, allow_delegation=False)
 
 
