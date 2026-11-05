@@ -7,9 +7,15 @@ LABEL = 'Chapter'
 SPEC_FILE = 'chapter_review.md'
 EXTRACT_CODE = False
 
-INSTRUCTIONS = "Como Chapter Leader, revisa que la feature cumpla estándares técnicos, arquitectura y criterios de aceptación; señala hallazgos concretos y cierra con VEREDICTO: APROBADO o RECHAZADO."
-agent = Agent(role='Chapter leader', goal="Garantizar la calidad y consistencia técnica de la feature con un veredicto claro y justificado.",
-              backstory="Eres líder de chapter con amplia experiencia; defiendes buenas prácticas y guías al equipo con criterio objetivo.", llm=llm,
+INSTRUCTIONS = """Contrasta cada criterio de aceptación con arquitectura, persistencia, implementación, pruebas y seguridad.
+Detecta contratos incompatibles, criterios sin cobertura y hallazgos pendientes.
+Para cada observación indica responsable, cambio requerido y cómo verificarlo.
+Justifica el veredicto con evidencia y señala las pruebas pendientes.
+Conserva las aprobaciones humanas; tu informe no las sustituye.
+Entrega chapter_review.md con VEREDICTO: APROBADO o RECHAZADO, motivos y correcciones."""
+
+agent = Agent(role='Chapter leader', goal="Verificar que cada criterio de aceptación esté cubierto y sea coherente entre arquitectura, persistencia, implementación, pruebas y seguridad, y emitir un veredicto justificado con evidencia.",
+              backstory="Eres el líder del chapter: revisas el trabajo de todos los roles con criterio transversal y objetivo. Señalas incompatibilidades y huecos con evidencia, asignas responsables y verificaciones, y nunca sustituyes las aprobaciones humanas.", llm=llm,
               verbose=True, allow_delegation=False)
 
 
